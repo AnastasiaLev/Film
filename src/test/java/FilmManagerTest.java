@@ -42,6 +42,7 @@ public class FilmManagerTest {
         String[] actual = manager.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void addReverseFilmsTest() {
         FilmManager manager = new FilmManager();
@@ -51,6 +52,7 @@ public class FilmManagerTest {
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void MoreLimitFilmsTest() {
         FilmManager manager = new FilmManager();
@@ -60,10 +62,11 @@ public class FilmManagerTest {
         manager.add("Boom");
         manager.add("Кот");
         manager.add("Разум");
-        String[] expected = {"Разум","Кот", "Boom","Жить","Игра Престолов"};
+        String[] expected = {"Разум", "Кот", "Boom", "Жить", "Игра Престолов"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
-}
+    }
+
     @Test
     public void limitFilmTest() {
         FilmManager manager = new FilmManager(7);
@@ -74,7 +77,7 @@ public class FilmManagerTest {
         manager.add("Boom");
         manager.add("Кот");
         manager.add("Разум");
-        String[] expected = {"Разум","Кот", "Boom","Жить","Игра Престолов","Ого","Хатико"};
+        String[] expected = {"Разум", "Кот", "Boom", "Жить", "Игра Престолов", "Ого", "Хатико"};
         String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
