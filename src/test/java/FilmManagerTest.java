@@ -28,18 +28,54 @@ public class FilmManagerTest {
         manager.add("Boom");
         manager.add("Кот");
         manager.add("Разум");
-        String[] expected = {"Игра Престолов", "Жить", "Разум", "Boom", "Кот", "Разум"};
+        String[] expected = {"Игра Престолов", "Жить", "Boom", "Кот", "Разум"};
         String[] actual = manager.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void sameFilmsTest() {
-        FilmManager manager2 = new FilmManager();
-        manager2.add("Мама");
-        manager2.add("Мама");
+        FilmManager manager = new FilmManager();
+        manager.add("Мама");
+        manager.add("Мама");
         String[] expected = {"Мама", "Мама"};
-        String[] actual = manager2.findAll();
+        String[] actual = manager.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void addReverseFilmsTest() {
+        FilmManager manager = new FilmManager();
+        manager.add("Мама");
+        manager.add("Метро");
+        String[] expected = {"Метро", "Мама"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void MoreLimitFilmsTest() {
+        FilmManager manager = new FilmManager();
+        manager.add("Ого");
+        manager.add("Игра Престолов");
+        manager.add("Жить");
+        manager.add("Boom");
+        manager.add("Кот");
+        manager.add("Разум");
+        String[] expected = {"Разум","Кот", "Boom","Жить","Игра Престолов"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+}
+    @Test
+    public void limitFilmTest() {
+        FilmManager manager = new FilmManager(7);
+        manager.add("Хатико");
+        manager.add("Ого");
+        manager.add("Игра Престолов");
+        manager.add("Жить");
+        manager.add("Boom");
+        manager.add("Кот");
+        manager.add("Разум");
+        String[] expected = {"Разум","Кот", "Boom","Жить","Игра Престолов","Ого","Хатико"};
+        String[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
